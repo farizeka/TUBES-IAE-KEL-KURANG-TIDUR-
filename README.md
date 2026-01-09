@@ -1,0 +1,6 @@
+TUGAS BESAR UNTUK MEMENUHI TUGAS PENGGANTI UAS
+Kelompok KURANG TIDUR
+1. Muhammad Fariz Eka Putra - 102022300300
+2. Billy Aditya Amanda - 102022300252
+
+Integrasi dengan Kelompok WALANG KAIBIGAN
