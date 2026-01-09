@@ -1,0 +1,42 @@
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: auth_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  auth-service:
+    build: ./services/auth-service
+    container_name: auth-service
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      MYSQL_HOST: mysql-db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: auth_db
+    depends_on:
+      - mysql-db
+
+  booking-service:
+    build: ./services/booking-service
+    container_name: booking-service
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      MYSQL_HOST: mysql-db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: dokter_booking
+    depends_on:
+      - mysql-db
+      - auth-service
+
+volumes:
+  mysql_data:
